@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Star extends Model
 {
     use HasFactory;
+
+    public function profiles(){
+        return $this->belongsToMany(Profile::class);
+    }
 }
