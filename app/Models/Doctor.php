@@ -43,4 +43,10 @@ class Doctor extends Model
             get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
         );
     }
+    protected function cv(): Attribute
+    {
+        return Attribute::make(
+            get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
+        );
+    }
 }

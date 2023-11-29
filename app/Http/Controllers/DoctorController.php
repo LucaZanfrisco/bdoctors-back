@@ -36,9 +36,7 @@ class DoctorController extends Controller
         return to_route('doctor.index');
 
     }
-    public function show(){
-        
-    }
 
+    
     
 }
