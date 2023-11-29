@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
+    public function index(){
+        $user = User::with('doctor')->where('id', Auth::id())->first();
+        return view('admin.index', compact('user'));
+    }
+    
     public function store(StoreDoctorRequest $request){
         $data = $request->validated();
 
@@ -28,12 +33,12 @@ class DoctorController extends Controller
 
         $newDoctor->save();
 
-        return to_route('doctor.show', $newDoctor);
+        return to_route('doctor.index');
 
     }
-
-    public function show(Doctor $doctor){
-        $user = User::with('doctor')->where('id', $doctor->user_id)->first();
-        return view('admin.show', compact('user'));
+    public function show(){
+        
     }
+
+    
 }
