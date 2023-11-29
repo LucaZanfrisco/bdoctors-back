@@ -33,7 +33,7 @@ class DoctorController extends Controller
 
         $newDoctor->save();
 
-        return to_route('doctor.index');
+        return to_route('admin.doctor.index');
 
     }
 
