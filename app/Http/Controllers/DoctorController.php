@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDoctorRequest;
+use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,6 +40,14 @@ class DoctorController extends Controller
 
     public function create(){
         return view('admin.create');
+    }
+
+    public function edit(Doctor $doctor){
+        return view('admin.edit');
+    }
+
+    public function update(UpdateDoctorRequest $doctor){
+
     }
     
     

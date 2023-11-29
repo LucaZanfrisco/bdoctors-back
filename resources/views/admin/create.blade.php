@@ -14,7 +14,7 @@
         @csrf
         <div class="my-3">
             <label class="form-label fs-4 fw-bold" for="description">Descrizione</label>
-            <textarea class="form-control" name="description" id="description" cols=5" rows="2">{{ old ('description') }}</textarea>
+            <textarea class="form-control" name="description" id="description" cols="5" rows="2">{{ old ('description') }}</textarea>
         </div>
 
         <div class="my-3">

@@ -20,4 +20,8 @@
             </div>
         </div>
     </div>
+
+    @if($user->doctor)
+    <button><a href="{{ route('admin.doctor.edit', $user->doctor->id) }}">edit</a></button>
+    @endif
 @endsection
