@@ -24,7 +24,12 @@ class UpdateDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "cv" => "file|mimes:pdf",
+            "address" => "required|max:255",
+            "photo" => "image",
+            "services" => "required",
+            "description" => "required|max:255",
+            "visible" => "required|boolean"
         ];
     }
 }

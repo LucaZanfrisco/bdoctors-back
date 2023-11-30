@@ -10,17 +10,18 @@
             </ul>
         </div>
     @endif
-        
+    <form action="{{ route('admin.doctor.update', $user->doctor->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="my-3">
             <div class="my-3">
                 <label class="form-label fs-4 fw-bold" for="description">Descrizione</label>
-                <textarea class="form-control" name="description" id="description" cols="5" rows="2">{{ old ('description') }}</textarea>
+                <textarea class="form-control" name="description" id="description" cols="5" rows="2">{{ $user->doctor->description }}</textarea>
             </div>
     
             <div class="my-3">
                 <label class="form-label fs-4 fw-bold" for="services">Servizi</label>
-                <textarea class="form-control" name="services" id="services" cols="5" rows="2">{{ old('services')}}</textarea>
+                <textarea class="form-control" name="services" id="services" cols="5" rows="2">{{ $user->doctor->services }}</textarea>
             </div>
     
             <div class="my-3">
@@ -35,18 +36,17 @@
     
             <div class="my-3">
                 <label for="address" class="form-label fs-4 fw-bold">Indirizzo</label>
-                <input class="form-control" type="text" name="address" id="address" value="{{ old('address')}}">
+                <input class="form-control" type="text" name="address" id="address" value="{{ $user->doctor->address }}">
             </div>
     
             <div class="my-3">
                 <label for="visible" class="form-label fs-4 fw-bold ">Visibile</label>
                 <select name="visible" id="visible" class="form-select">
                     <option value="" selected disabled>Seleziona se mostrare il tuo profilo</option>
-                    <option value="1" {{ old('visible')==1 ? 'selected': ''}}>Visibile</option>
-                    <option value="0"{{ old('visible')== 0 ? 'selected' : ''}}>Non visibile</option>
+                    <option value="1"{{ $user->doctor->visible ==1 ? 'selected': ''}}>Visibile</option>
+                    <option value="0"{{ $user->doctor->visible == 0 ? 'selected' : ''}}>Non visibile</option>
                 </select>
             </div>
-    
             <button type="submit" class="btn btn-success">Conferma</button>
         </div>
     </form>

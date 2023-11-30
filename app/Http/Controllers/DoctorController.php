@@ -43,11 +43,27 @@ class DoctorController extends Controller
     }
 
     public function edit(Doctor $doctor){
-        return view('admin.edit');
+        $user = User::with('doctor')->where('id', Auth::id())->first();
+        return view('admin.edit', compact('user'));
     }
 
-    public function update(UpdateDoctorRequest $doctor){
+    public function update(UpdateDoctorRequest $request, Doctor $doctor){
+        $data = $request->validated();
 
+        $doctor->update($data);
+        
+        if(isset($data['photo'])){
+            $doctor->photo = Storage::put("uploads", $data["photo"]);
+        }
+    
+        if(isset($data['cv'])){
+            $doctor->cv = Storage::put("uploads", $data["cv"]);
+        }
+    
+        $doctor->save();
+    
+        return redirect()->route('admin.doctor.index');
+        
     }
     
     
