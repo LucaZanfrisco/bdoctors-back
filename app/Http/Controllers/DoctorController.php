@@ -49,20 +49,31 @@ class DoctorController extends Controller
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor){
         $data = $request->validated();
+     
+        
+  
 
-        $doctor->update($data);
+        if(isset($data['photo']) && $doctor->photo){
+            dd($doctor->photo);
+            Storage::delete($doctor->photo);
+        }
+     
+        if(isset($data['cv']) && $doctor->cv){
+            Storage::delete($doctor->cv);
+        }
         
         if(isset($data['photo'])){
             $doctor->photo = Storage::put("uploads", $data["photo"]);
         }
-    
+
         if(isset($data['cv'])){
             $doctor->cv = Storage::put("uploads", $data["cv"]);
         }
-    
+        
+        $doctor->update($data);
         $doctor->save();
-    
-        return redirect()->route('admin.doctor.index');
+
+    return redirect()->route('admin.doctor.index');
         
     }
     
