@@ -16,7 +16,7 @@ class DoctorController extends Controller
         $user = User::with('doctor')->where('id', Auth::id())->first();
         return view('admin.index', compact('user'));
     }
-    
+
     public function store(StoreDoctorRequest $request){
         $data = $request->validated();
 
@@ -49,19 +49,18 @@ class DoctorController extends Controller
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor){
         $data = $request->validated();
-     
-        
-  
+
+
+
 
         if(isset($data['photo']) && $doctor->photo){
-            dd($doctor->photo);
             Storage::delete($doctor->photo);
         }
-     
+
         if(isset($data['cv']) && $doctor->cv){
             Storage::delete($doctor->cv);
         }
-        
+
         if(isset($data['photo'])){
             $doctor->photo = Storage::put("uploads", $data["photo"]);
         }
@@ -69,13 +68,13 @@ class DoctorController extends Controller
         if(isset($data['cv'])){
             $doctor->cv = Storage::put("uploads", $data["cv"]);
         }
-        
+
         $doctor->update($data);
         $doctor->save();
 
     return redirect()->route('admin.doctor.index');
-        
+
     }
-    
-    
+
+
 }
