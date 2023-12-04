@@ -10,6 +10,6 @@ class Star extends Model
     use HasFactory;
 
     public function profiles(){
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class, 'profile_star');
     }
 }

@@ -26,11 +26,11 @@ class Doctor extends Model
     }
 
     public function sponsorships(){
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class, 'profile_sponsorship', 'profile_id');
     }
 
     public function stars(){
-        return $this->belongsToMany(Star::class);
+        return $this->belongsToMany(Star::class, 'profile_star', 'profile_id');
     }
 
     public function typologies(){
@@ -43,12 +43,12 @@ class Doctor extends Model
     //         get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
     //     );
     // }
-    protected function cv(): Attribute
-    {
-        return Attribute::make(
-            get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
-        );
-    }
+    // protected function cv(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
+    //     );
+    // }
 
     public function urlPhoto(){
         return $this->photo ? asset('storage/'.$this->photo) : null;

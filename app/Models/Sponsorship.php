@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsorship extends Model
 {
     public function profiles(){
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class, 'profile_sponsorship');
     }
 }
