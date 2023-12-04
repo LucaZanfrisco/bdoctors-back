@@ -46,6 +46,24 @@
             </select>
         </div>
 
+        <div class="my-3">
+            <label for="typology" class="form-label fs-4 fw-bold">Specializzazione</label>
+            <div class="row row-cols-5">
+                @foreach ($typologies as $typology)
+                <div class="col">
+                    <input type="checkbox" class="btn-check" id="{{ $typology->id }}"
+                    {{ in_array($typology->id, old('typologies', [])) ? 'checked' : null }} autocomplete="off"
+                    value="{{ $typology->id }}" name="typologies[]">
+                <label
+                    class="btn btn-outline-primary d-flex p-1 m-0 justify-content-center align-items-center rounded-2 flex-column"
+                    for="{{ $typology->id }}">{{ $typology->name }}</label><br>
+                </div>
+
+            @endforeach
+            </div>
+
+        </div>
+
         <button type="submit" class="btn btn-success">Conferma</button>
     </form>
 </div>

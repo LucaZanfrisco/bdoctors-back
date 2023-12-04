@@ -34,19 +34,23 @@ class Doctor extends Model
     }
 
     public function typologies(){
-        return $this->belongsToMany(Typology::class);
+        return $this->belongsToMany(Typology::class, 'profile_typology', 'profile_id');
     }
 
-    protected function Photo(): Attribute
-    {
-        return Attribute::make(
-            get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
-        );
-    }
+    // protected function Photo(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
+    //     );
+    // }
     protected function cv(): Attribute
     {
         return Attribute::make(
             get: fn(string|null $value)=>$value ? asset('storage/'.$value) : null,
         );
+    }
+
+    public function urlPhoto(){
+        return $this->photo ? asset('storage/'.$this->photo) : null;
     }
 }

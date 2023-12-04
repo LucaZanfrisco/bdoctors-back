@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Typology;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,11 @@ class DoctorController extends Controller
 {
     public function index(){
         $user = User::with('doctor')->where('id', Auth::id())->first();
+
+        if($user->doctor == null){
+            return to_route('admin.doctor.create');
+        }
+
         return view('admin.index', compact('user'));
     }
 
@@ -34,12 +40,19 @@ class DoctorController extends Controller
 
         $newDoctor->save();
 
+        if($request['typologies']){
+            $newDoctor->typologies()->attach($newDoctor->user_id, $request['typologies']);
+        }
+
         return to_route('admin.doctor.index');
 
     }
 
     public function create(){
-        return view('admin.create');
+
+        $typologies = Typology::all();
+        return view('admin.create', compact('typologies'));
+
     }
 
     public function edit(Doctor $doctor){
@@ -49,19 +62,6 @@ class DoctorController extends Controller
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor){
         $data = $request->validated();
-<<<<<<< Updated upstream
-
-
-
-=======
-<<<<<<< HEAD
-     
-=======
-
-
-
->>>>>>> 165dcee7d0cd7ed9bf6b6a7b50cd5f33c22477c1
->>>>>>> Stashed changes
 
         if(isset($data['photo']) && $doctor->photo){
             Storage::delete($doctor->photo);
