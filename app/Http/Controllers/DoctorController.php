@@ -49,9 +49,19 @@ class DoctorController extends Controller
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor){
         $data = $request->validated();
+<<<<<<< Updated upstream
 
 
 
+=======
+<<<<<<< HEAD
+     
+=======
+
+
+
+>>>>>>> 165dcee7d0cd7ed9bf6b6a7b50cd5f33c22477c1
+>>>>>>> Stashed changes
 
         if(isset($data['photo']) && $doctor->photo){
             Storage::delete($doctor->photo);
