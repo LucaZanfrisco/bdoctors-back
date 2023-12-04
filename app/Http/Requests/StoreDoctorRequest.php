@@ -29,7 +29,8 @@ class StoreDoctorRequest extends FormRequest
             "photo" => "required|image",
             "services" => "required",
             "description" => "required|max:255",
-            "visible" => "required|boolean"
+            "visible" => "required|boolean",
+            'typologies' => "required|exists:typologies,id",
         ];
     }
 }

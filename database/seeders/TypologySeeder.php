@@ -17,10 +17,17 @@ class TypologySeeder extends Seeder
      */
     public function run()
     {
-        $typologies = ['Urologia', 'Oculistica', 'Chirurgia', 'Ortopedia', 'Podologia', 'Logopedia', 'Ematologia', 'Allergologia'];
+        $typologies = ["Allergologia", "Cardiologia", "Chirurgia", "Dermatologia", 
+        "Endocrinologia", "Fisiatria", "Fisioterapia", "Gastroenterologia", 
+        "Geriatria", "Ginecologia", "Logopedista", "Medicina del lavoro", 
+        "Neurochirurgia", "Oncologia", "Odontoiatria", "Ortopedia", 
+        "Osteopatia", "Otorinolaringoiatria", "Pediatria", "Pneumologia", 
+        "Psichiatria", "Psicologia", "Urologia" ];
+
         Schema::disableForeignKeyConstraints();
         Typology::truncate();
         Schema::enableForeignKeyConstraints();
+        
         foreach($typologies as $typology){
             $new_typology = new Typology();
             $new_typology->name = $typology;

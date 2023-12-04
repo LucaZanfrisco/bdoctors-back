@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-4">
-                <img class="img-fluid rounded" src="{{ $user->doctor?->photo }}" alt="{{ $user->name }}">
+                <img class="img-fluid rounded" src="{{ $user->doctor?->urlPhoto() }}" alt="{{ $user->name }}">
                 <iframe class="mt-2 w-100" style="height: 300px" src="{{ $user->doctor?->cv }}#page=1" frameborder="1"></iframe>
             </div>
             <div class="col-8 d-flex align-items-center flex-column">
