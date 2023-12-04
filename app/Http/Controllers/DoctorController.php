@@ -41,7 +41,7 @@ class DoctorController extends Controller
         $newDoctor->save();
 
         if($request['typologies']){
-            $newDoctor->typologies()->attach($newDoctor->user_id, $request['typologies']);
+            $newDoctor->typologies()->attach($request['typologies']);
         }
 
         return to_route('admin.doctor.index');
