@@ -63,7 +63,10 @@ class DoctorController extends Controller
     {
 
         $typologies = Typology::all();
-        return view('admin.create', compact('typologies'));
+        if(Auth::user()->doctor->id){
+            return to_route('admin.doctor.index');
+        }
+        return view('admin.doctor.create', compact('typologies'));
     }
 
     public function edit(Doctor $doctor)
