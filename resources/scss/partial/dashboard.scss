@@ -45,6 +45,8 @@
         padding: 1.25rem;
         a{
             color: black;
+            display: inline-block;
+            margin: auto;
             &:hover{
                 color: var(--link-color);
                 scale: 1.05;
@@ -82,7 +84,7 @@
                 color: black;
                 text-decoration: none;
                 font-weight: bold;
-                display: block;
+                display: inline-block;
                 margin-top: 50px;
                 &:hover{
                     color: var(--link-color);

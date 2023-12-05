@@ -21,6 +21,18 @@
             @include('layouts.personal.partial.navbar')
         </div>
         <div class="content">
+            <div class="first-line">
+                <div class="fw-bold fs-4">
+                    @yield('content-name')
+                </div>
+                <div class="profile">
+                    <a class="text-decoration-none" href="{{ url('profile') }}">{{ Auth::user()->name }}</a>
+                    <div class="img-container">
+                        <img src="{{Auth::user()->doctor->photo }}" alt="{{ Auth::user()->name }}">
+                    </div>
+                </div>
+        
+            </div>
             @yield('content')
         </div>
     </div>

@@ -13,7 +13,7 @@
     font-style: oblique;
     color: rgb(63, 63, 238);
     width: 100%;
-    
+    text-align: center;
 }
 
 .navbar {
@@ -56,4 +56,21 @@
 .active {
     background-color: var(--active-link);
     border-radius: .9375rem;
+}
+.logout{
+    padding-bottom: 20px;
+    margin-top: auto;
+    a{
+        font-weight: bold;
+        &:hover{
+            cursor: pointer;
+            color: red;
+            scale: 1.05;
+        }
+        i{
+            font-size: 1.375rem;
+            margin-right: .625rem;
+        }
+    }
+    
 }

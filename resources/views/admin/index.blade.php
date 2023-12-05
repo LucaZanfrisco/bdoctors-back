@@ -1,18 +1,8 @@
 @extends('layouts.personal.app')
-
+@section('content-name')
+    Dashboard Generale
+@endsection
 @section('content')
-    <div class="first-line">
-        <div class="fw-bold fs-4">
-            Dashboard Generale
-        </div>
-        <div class="profile">
-            <a class="text-decoration-none" href="{{ url('profile') }}">{{ Auth::user()->name }}</a>
-            <div class="img-container">
-                <img src="{{ $user->doctor->photo }}" alt="{{ $user->name }}">
-            </div>
-        </div>
-
-    </div>
     <div class="d-flex justify-content-between">
         <div class="first-col">
             <div class="messages">
@@ -26,7 +16,10 @@
                         </li>
                     @endforeach
                 </ul>
-                <a href="" class="text-decoration-none d-block text-center fw-bold">Vedi Tutti -></a>
+                <div class="text-center">
+                    <a href="{{ route('admin.message.index') }}" class="text-decoration-none fw-bold">Vedi Tutti -></a>
+                </div>
+
             </div>
             <div class="sponsor">
                 @foreach ($sponsor->sponsorships as $sponsor)
@@ -34,9 +27,12 @@
                         La sponsorizzazione termina il giorno <span>{{ $sponsor->pivot->end_date }}</span>
                     </div>
                 @endforeach
-                <a class="text-center">Estendi -></a>
+                <div class="text-center">
+                    <a href="">Estendi -></a>
+                </div>
+
             </div>
-           
+
         </div>
 
     </div>
