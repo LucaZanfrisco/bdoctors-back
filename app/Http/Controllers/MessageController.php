@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Termwind\Components\Dd;
 
 class MessageController extends Controller
 {
@@ -20,5 +21,10 @@ class MessageController extends Controller
 
     public function destroy(Message $message){
         
+        $name = $message->name;
+
+        $message->delete();
+
+        return back()->with('message', "Messaggio di {$name} eliminato con successo ");
     }
 }
