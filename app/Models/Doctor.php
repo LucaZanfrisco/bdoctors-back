@@ -30,7 +30,7 @@ class Doctor extends Model
     }
 
     public function stars(){
-        return $this->belongsToMany(Star::class, 'profile_star', 'profile_id');
+        return $this->belongsToMany(Star::class, 'profile_star', 'profile_id')->withPivot('profile_id');
     }
 
     public function typologies(){

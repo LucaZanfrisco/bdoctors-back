@@ -6,11 +6,14 @@ use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
 use App\Models\Message;
+use App\Models\Review;
 use App\Models\Sponsorship;
+use App\Models\Star;
 use App\Models\Typology;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Comment\Doc;
 
@@ -25,13 +28,17 @@ class DoctorController extends Controller
         }
         $messages = Message::where('profile_id', $user->doctor->id)
             ->orderByDesc('created_at')
-            ->take(3)
             ->get();
         $sponsor = Doctor::where('id', $user->doctor->id)
             ->with('sponsorships')
             ->first();
 
-        return view('admin.index', compact(['user', 'messages', 'sponsor']));
+        $avarageStars = DB::table('profile_star')
+            ->where('profile_id', $user->doctor->id)
+            ->join('stars', 'profile_star.star_id', 'stars.id') 
+            ->average('value');
+
+        return view('admin.index', compact(['user', 'messages', 'sponsor','avarageStars']));
     }
 
     public function store(StoreDoctorRequest $request)
