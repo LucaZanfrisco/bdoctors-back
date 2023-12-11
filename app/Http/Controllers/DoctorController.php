@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Comment\Doc;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class DoctorController extends Controller
 {
@@ -39,6 +39,11 @@ class DoctorController extends Controller
             ->average('value');
 
         return view('admin.index', compact(['user', 'messages', 'sponsor','avarageStars']));
+    }
+
+    public function show(Doctor $doc){
+        $doctor = Doctor::where('id', Auth::user()->doctor->id)->first();
+        return view('admin.doctor.show', compact('doctor'));
     }
 
     public function store(StoreDoctorRequest $request)
@@ -79,7 +84,7 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         $user = User::with('doctor')->where('id', Auth::id())->first();
-        return view('admin.edit', compact('user'));
+        return view('admin.doctor.edit', compact('user'));
     }
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor)

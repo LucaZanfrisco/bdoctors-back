@@ -43,7 +43,7 @@
                     <div class="stars">La tua valutazione media: <span>{{ $avarageStars }}</span></div>
                 </div>
                 <div>
-                    <a href="{{ route('admin.doctor.show', $user->doctor->id)}}" class="profile">Profilo</a>
+                    <a href="{{ route('admin.doctor.show', $user->doctor)}}" class="profile">Profilo</a>
                 </div>
             </div>
             <div class="stat">
