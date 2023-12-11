@@ -54,7 +54,8 @@
             width: 100%;
             margin: 15px 5px;
             .message-text{
-                border-bottom: 1px solid lightgray;  
+                border-bottom: 1px solid lightgray;
+                width: calc(100% - 75px );  
             }
             .message-name{
                 border: 2px solid black;

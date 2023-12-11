@@ -13,8 +13,8 @@
                 <ul class="list-unstyled">
                     @for ($i = 0; $i < 3; $i++)
                         <li class="message-info row row-cols-2 align-items-center">
-                            <div class="fw-bold message-name col-2">{{ Str::limit($messages[$i]->name, 1, '') }}</div>
-                            <div class="col-10 message-text">
+                            <div class="fw-bold message-name">{{ Str::limit($messages[$i]->name, 1, '') }}</div>
+                            <div class="message-text">
                                 <div class="message-email">{{ $messages[$i]->email }}</div>
                                 <div>{{ Str::limit($messages[$i]->message, 75, '...') }}</div>
                             </div>
