@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+
 @section('content')
 <!-- Header -->
 <h2 class=" fw-semibold fs-2 text-secondary">

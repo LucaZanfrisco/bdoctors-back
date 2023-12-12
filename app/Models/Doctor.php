@@ -26,11 +26,11 @@ class Doctor extends Model
     }
 
     public function sponsorships(){
-        return $this->belongsToMany(Sponsorship::class, 'profile_sponsorship', 'profile_id');
+        return $this->belongsToMany(Sponsorship::class, 'profile_sponsorship', 'profile_id')->withPivot('end_date','start_date');
     }
 
     public function stars(){
-        return $this->belongsToMany(Star::class, 'profile_star', 'profile_id');
+        return $this->belongsToMany(Star::class, 'profile_star', 'profile_id')->withPivot('profile_id');
     }
 
     public function typologies(){

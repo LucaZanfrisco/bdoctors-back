@@ -1,4 +1,10 @@
-@vite(['resources/js/app.js'])
+@extends('layouts.personal.app')
+
+@section('content-name')
+    Modifica Profilo
+@endsection
+
+@section('content')
 <div class="container mt-5">
     <h1>Modificail tuo profilo</h1>
     @if ($errors->any())
@@ -51,3 +57,5 @@
         </div>
     </form>
 </div> 
+
+@endsection
