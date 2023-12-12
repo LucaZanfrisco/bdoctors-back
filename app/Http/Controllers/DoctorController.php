@@ -42,7 +42,7 @@ class DoctorController extends Controller
     }
 
     public function show(Doctor $doc){
-        $doctor = Doctor::where('id', Auth::user()->doctor->id)->first();
+        $doctor = Doctor::where('id', Auth::user()->doctor->id)->with('typologies')->first();
         return view('admin.doctor.show', compact('doctor'));
     }
 
@@ -110,6 +110,6 @@ class DoctorController extends Controller
         $doctor->update($data);
         $doctor->save();
 
-        return redirect()->route('admin.doctor.index');
+        return to_route('admin.doctor.show', $doctor);
     }
 }
