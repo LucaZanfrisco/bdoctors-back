@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -20,11 +20,12 @@ class DoctorController extends Controller
         $user = User::with(['doctor','doctor.typologies'])
         ->leftJoin('profile_star', 'users.id', '=', 'profile_star.profile_id')
         ->leftJoin('stars', 'profile_star.star_id', '=', 'stars.id')
+        ->leftJoin('reviews', 'users.id', '=', 'reviews.profile_id')
         ->groupBy('users.id')
-        ->selectRaw('users.*, AVG(stars.value) as averageStars')
+        ->selectRaw('users.*, AVG(stars.value) as averageStars, COUNT(reviews.id) as reviewCount')
         ->paginate(10);
 
-        if($user){
+        if($user->count() > 0){
             return response()->json([
                 'result' => 200,
                 'data' => $user,
