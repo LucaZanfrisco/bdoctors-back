@@ -16,18 +16,18 @@ class TypologyController extends Controller
     public function index()
     {
         $typologies = Typology::all();
-        
+
         if($typologies){
             return response()->json([
                 'result' => 200,
                 'data' => $typologies,
-           ]);
+        ]);
         }else{
             return response()->json([
                 'result' => 404,
             ]);
         }
-       
+
     }
 
     /**

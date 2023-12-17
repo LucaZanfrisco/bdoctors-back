@@ -35,7 +35,7 @@ class DoctorController extends Controller
 
         $avarageStars = DB::table('profile_star')
             ->where('profile_id', $user->doctor->id)
-            ->join('stars', 'profile_star.star_id', 'stars.id') 
+            ->join('stars', 'profile_star.star_id', 'stars.id')
             ->average('value');
 
         return view('admin.index', compact(['user', 'messages', 'sponsor','avarageStars']));
