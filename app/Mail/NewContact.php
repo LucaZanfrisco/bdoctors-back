@@ -8,6 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 class NewContact extends Mailable
 {
@@ -34,7 +36,7 @@ class NewContact extends Mailable
     {
         return new Envelope(
             subject: 'Risposta',
-            replyTo: $this->lead->address,
+            replyTo: $this->lead['email'],
         );
     }
 
@@ -46,7 +48,7 @@ class NewContact extends Mailable
     public function content()
     {
         return new Content(
-            view: 'views.email.content',
+            view: 'email.content',
         );
     }
 
@@ -59,4 +61,5 @@ class NewContact extends Mailable
     {
         return [];
     }
+    
 }
