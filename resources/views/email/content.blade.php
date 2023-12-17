@@ -25,7 +25,7 @@
         </div>
         <div class="card p-3">
             <div class="fw-bold">
-                Salve, {{ Auth::user()->name}} {{ Auth::user()->lastname}}
+                Salve, {{ $lead['nameLastname']}}
             </div>
             <div class="mt-3">
                 {{ $lead['responseContent']}}
