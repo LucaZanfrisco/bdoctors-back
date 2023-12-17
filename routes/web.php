@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Mail\NewContact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->name('admin.')->group(function(){
     Route::resource('doctor', DoctorController::class);
     Route::resource('message', MessageController::class);
+    Route::get('lead', [LeadController::class, 'store'])->name('lead');
 });
 
 
