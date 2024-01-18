@@ -36,13 +36,19 @@
 #link-list li {
     padding: 20px;
     width: 100%;
+    border-radius: 0.9375rem;
+
+
 }
 
 #link-list li a {
     color: black;
     display: flex;
     align-items: center;
-
+    &:hover{
+        scale: 1.05;
+        cursor: pointer;
+    }
     i {
         margin-right: .625rem;
         color: var(--link-color);
@@ -72,5 +78,5 @@
             margin-right: .625rem;
         }
     }
-    
+
 }

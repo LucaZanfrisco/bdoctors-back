@@ -2,12 +2,7 @@
 
 @section('content')
     <div class="container login">
-        <div class="row align-items-center justify-content-center h-100">
-            <div class="col-4 slogan">
-                <div><i class="fa-solid fa-user-doctor"></i></div>
-                <div class="text">Registrati al portale di dottori numero 1</div>
-            </div>
-            <div class="col-8">
+
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
 
