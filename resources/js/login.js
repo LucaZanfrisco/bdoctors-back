@@ -1,4 +1,4 @@
-if(document.getElementById("password")){
+if(document.getElementById("showPassword")){
     let showPassword = document.getElementById("showPassword");
     let hidePassword = document.getElementById("hidePassword");
     let passwordInput = document.getElementById("password");
